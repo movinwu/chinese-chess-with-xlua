@@ -1,0 +1,8 @@
+SingleGamePanel = class("SingleGamePanel",BasePanel)
+SingleGamePanel.NAME = "SingleGamePanel"
+
+local module = SingleGamePanel
+
+function module:ctor()
+    self.super.ctor(self)
+end

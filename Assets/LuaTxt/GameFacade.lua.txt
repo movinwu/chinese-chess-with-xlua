@@ -1,0 +1,17 @@
+GameFacade = class("GameFacade",PureMVC.Facade)
+
+local module = GameFacade
+
+function module:ctor()
+    self.super:ctor()
+    --监听命令
+    self:RegisterCommand(NotificationNames.START_UP_GAME,function()
+        return StartUpCommand.new()
+    end)
+    self:RegisterCommand(NotificationNames.SHOW_PANEL,function()
+        return ShowPanelCommand.new()
+    end)
+    self:RegisterCommand(NotificationNames.HIDE_PANEL,function()
+        return HidePanelCommand.new()
+    end)
+end

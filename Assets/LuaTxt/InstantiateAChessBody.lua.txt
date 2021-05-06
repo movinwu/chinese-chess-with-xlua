@@ -1,0 +1,10 @@
+InstantiateAChessBody = class("InstantiateAChessBody")
+
+local module = InstantiateAChessBody
+module.position = nil
+module.id = nil
+
+function module:ctor(position,id)
+    self.position = position
+    self.id = id
+end

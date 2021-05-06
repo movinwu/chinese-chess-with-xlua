@@ -1,0 +1,53 @@
+require "InstantiateAChessBody"
+require "MoveChessBody"
+
+--持有棋子数据，并提供了获取棋子、移动棋子、删除棋子等的基础方法
+ChessPiece = class("ChessPiece")
+
+local module = ChessPiece
+--下方棋盘玩家的棋子类型，0-红色，1-黑色
+module.playerColor = 0
+
+--构造方法需要给定下方棋盘玩家的棋子类型
+--实例化棋子位置数据
+function module:ctor(playerColor)
+    self.playerColor = playerColor
+
+    --所有棋子的位置
+    local chessPositions = Json:LoadJsonFile("ChessPosition")
+    --将读取出的棋子数据转存到一张新表中，使用Position作为键，棋子对象作为值
+    --这里使用position转成的字符串作为键，因为xlua中两个Vector2Int对象坐标相同，但是比较结果可能不等，这可能和底层实现有关
+    module.chessTable = {}
+    local position = nil
+    local positionStr = nil
+    local chessId = nil
+    for k,v in pairs(chessPositions) do
+        position = Vector2Int(v.positionX,v.positionY)
+        positionStr = position:ToString()
+        --根据json字符串中棋子id和棋子类型的关系作出的计算
+        --黑色棋子id为棋子类型乘2，红色棋子id为棋子类型乘2加1
+        chessId = (self.playerColor + v.color + 1) % 2 + v.type * 2
+        module.chessTable[positionStr] = chessDic[chessId]
+        --发送通知，在棋盘上显示棋子
+        GameFacade:GetInstance():SendNotification(NotificationNames.INSTANTIATE_A_CHESS,InstantiateAChessBody.new(position,chessId))
+
+    end
+end
+
+--提供方法获取棋子，需要给定棋子位置
+function module:GetChess(position)
+    return self.chessTable[position:ToString()]
+end
+
+--提供修改棋子位置的方法
+function module:ChangeChess(nowPosition,targetPosition)
+    self.chessTable[targetPosition:ToString()] = self.chessTable[nowPosition:ToString()]
+    self.chessTable[nowPosition:ToString()] = nil
+    --发送通知，更改棋子显示
+    GameFacade:GetInstance():SendNotification(NotificationNames.MOVE_CHESS,MoveChessBody.new())
+end
+
+--[[--提供移除棋子的方法
+function module:RemoveChess(position)
+    self.chessTable[position:ToString()] = nil
+end]]

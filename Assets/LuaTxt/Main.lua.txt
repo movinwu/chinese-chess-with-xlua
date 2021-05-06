@@ -1,0 +1,48 @@
+--运行PureMVC框架
+require "PureMVC"
+
+--运行取别名脚本
+require "Alias"
+--存储控件名称的全局表
+ControlNames = require "ControlNames"
+--存储通知名称的全局表
+NotificationNames = require "NotificationNames"
+--存储声音名称的全局表
+SoundNames = require "SoundNames"
+--存储所有面板名称的全局表
+PanelNames = require "PanelNames"
+
+--启动Tools文件夹中的各种工具脚本
+Json = require("JsonUtility")
+--在Json中再封装一个方法，用于读取棋子位置的json文件，存储为一个表，方便使用
+function Json:LoadJsonFile(jsonFileName)
+    local txt = AssetBundleManager:LoadRes("json",jsonFileName)
+    local jsonList = self.decode(txt.text)
+    
+    local temp = {}
+    for _,v in pairs(jsonList) do
+        temp[v.id] = v
+        --print(v.positionX,v.positionY,v.chessType,v.playerType)
+    end
+
+    return temp
+end
+
+--读取棋子的类型并封装成一个全局表，方便调用
+chessDic = Json:LoadJsonFile("ChessPieces")
+
+--启动各种管理类脚本
+require("AudioSourceManager")
+
+--启动基础Panel脚本，这个脚本用于持有panel控件并提供显隐panel的方法
+require "BasePanel"
+
+--运行启动命令脚本
+require "StartUpCommand"
+--运行自定义Facade脚本
+require "GameFacade"
+--运行网络脚本
+--require "Netword"
+
+--启动游戏
+GameFacade:GetInstance():SendNotification(NotificationNames.START_UP_GAME)

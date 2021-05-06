@@ -1,0 +1,10 @@
+local module = class("NotificationNames")
+
+module.START_UP_GAME = "StartUpGame"
+module.SHOW_PANEL = "ShowPanel"
+module.HIDE_PANEL = "HidePanel"
+
+module.MOVE_CHESS = "MoveChess"
+module.INSTANTIATE_A_CHESS = "InstantiateAChess"
+
+return module

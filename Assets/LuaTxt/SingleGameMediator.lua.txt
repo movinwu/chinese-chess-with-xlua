@@ -1,0 +1,92 @@
+require "SingleGamePanel"
+
+SingleGameMediator = class("SingleGameMediator",PureMVC.Mediator)
+SingleGameMediator.NAME = "SingleGameMediator"
+local module = SingleGameMediator
+--使用表存储棋盘上的每个棋子位置和实例对象
+module.chesses = {}
+--所有棋子的父物体transform
+module.chessFather = nil
+
+function module:ctor()
+    --在本项目中，panel都是只有一个，每个mediator和panel都是一一对应
+    --由于不会出现一个panel被多个mediator中介的情况，所以在mediator的构造方法内部实例化panel
+    local panel = SingleGamePanel.new()
+    self.super.ctor(self,self.NAME,panel)
+
+    --赋值所有棋子的父物体transform
+    self.chessFather = GameObject.Find("ChessPieces").transform
+
+    self:AddListener()
+end
+
+--为panel上的控件添加监听方法
+function module:AddListener()
+    self.View:GetControl(ControlNames.SINGLE_GAME_PANEL_UNDO_BUTTON,"Button").onClick:AddListener(function()
+        
+    end)
+    self.View:GetControl(ControlNames.SINGLE_GAME_PANEL_REPLAY_BUTTON,"Button").onClick:AddListener(function()
+        
+    end)
+    self.View:GetControl(ControlNames.SINGLE_GAME_PANEL_BACK_BUTTON,"Button").onClick:AddListener(function()
+        GameFacade:GetInstance():SendNotification(NotificationNames.SHOW_PANEL,PanelNames.MAIN)
+        GameFacade:GetInstance():SendNotification(NotificationNames.HIDE_PANEL,PanelNames.SINGLE_GAME)
+    end)
+end
+
+--提供供外界调用的显隐方法
+function module:ShowMe()
+    self.View:ShowMe()
+end
+function module:HideMe()
+    self.View:HideMe()
+end
+
+--需要监听的事件
+function module:ListNotificationInterests()
+    return {
+        NotificationNames.MOVE_CHESS,
+        NotificationNames.INSTANTIATE_A_CHESS
+    }
+end
+--事件的响应处理函数
+function module:HandleNotification(notification)
+    if notification.Name == NotificationNames.MOVE_CHESS then
+        --取出消息体中的数据
+        local nowPosition = notification.Body.nowPosition
+        local targetPosition = notification.Body.targetPosition
+        --取出棋子
+        local chess = self.chesses[nowPosition:ToString()]
+        --设置表中的棋子的存储
+        self.chesses[targetPosition] = chess
+        self.chesses[nowPosition:ToString()] = nil
+        --播放棋子动画
+        chess.transform:DOMove(PositionCastToLocal(targetPosition),0.5,false)
+
+    elseif NotificationNames.Name == NotificationNames.INSTANTIATE_A_CHESS then
+        local position = notification.Body.position
+        local id = notification.Body.id
+
+        --使用一个表存储棋子
+        local chess = {}
+
+        --实例化棋子
+        chess.gameObject = AssetBundleManager:LoadRes("chesspiece",chessDic[id].name,typeof(GameObject))
+        chess.transform = chess.gameObject.transform
+        --设置实例出来的棋子的位置
+        chess.transform:SetParent(self.chessFather,false)
+        chess.transform.localPosition = PositionCastToLocal(position)
+
+        --为标识棋子状态的图片赋值
+        chess.selectedImg = chess.pieceObj.transform:Find(ControlNames.CHESS_SELECTED_IMAGE).gameObject
+        chess.selectedImg:SetActive(false)
+        chess.CanBeEatImg = chess.pieceObj.transform:Find(ControlNames.CHESS_CAN_BE_EAT_IMAGE).gameObject
+        chess.CanBeEatImg:SetActive(false)
+        chess.lastImg = chess.pieceObj.transform:Find(ControlNames.LAST_CHESS_IMAGE).gameObject
+        chess.lastImg:SetActive(false)
+
+        --将棋子存入总表中
+        self.chesses[position:ToString()] = chess
+
+    end
+end

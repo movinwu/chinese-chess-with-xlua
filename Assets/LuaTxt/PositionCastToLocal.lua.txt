@@ -1,0 +1,10 @@
+--提供将代表在棋盘上几行几列的position转化为相对父物体下的坐标的方法
+function PositionCastToLocal(position)
+    local result = Vector3.zero
+    result.x = -640 + position.x * 159.5375
+    result.y = -685 + position.y * 159.13333
+    if position.y > 4 then
+        result.y = result.y + 13.9
+    end
+    return result
+end

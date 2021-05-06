@@ -1,0 +1,43 @@
+ManifestFileVersion: 0
+CRC: 2796471133
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6713903236ffc0133f077940818206e5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7290e47db5dbe4576fed2aef73fe1b68
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Buttons/Pieces/PieceRedMaBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedJuBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackZuBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackXiangBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackMaBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedShuaiBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedPaoBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedXiangBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackJiangBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedShiBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackShiBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceRedBingBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackPaoBtn.prefab
+- Assets/Prefabs/Buttons/Pieces/PieceBlackJuBtn.prefab
+Dependencies:
+- D:/UnityProjects/ChineseChessWithXLua/AssetBundles/Android/image

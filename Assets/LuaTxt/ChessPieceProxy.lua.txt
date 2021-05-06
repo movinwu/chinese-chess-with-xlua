@@ -1,0 +1,32 @@
+--执行数据对象脚本
+require "ChessPiece"
+
+ChessPieceProxy = class("ChessPieceProxy",PureMVC.Proxy)
+ChessPieceProxy.NAME = "ChessPieceProxy"
+
+local module = ChessPieceProxy
+
+function module:ctor()
+    --内部实例化持有的数据类型
+    local data = ChessPiece.new()
+    self.super.ctor(NAME,data)
+end
+
+--提供获取棋子、移动棋子、移除棋子等方法，在作出相应操作后需要发出通知让mediator作出显示
+function module:GetChess(position)
+    return self.Data:GetChess(position)
+end
+
+function module:ChangeChess(nowPosition,targetPosition)
+    self.Data:ChangeChess(nowPosition,targetPosition)
+    GameFacade:GetInstance():SendNotification(NotificationNames.MOVE_CHESS,{nowPosition,targetPosition})
+end
+
+--[[function module:RemoveChess(position)
+    self.Data:RemoveChess(position)
+end]]
+
+--提供方法获取存储所有棋子位置的表
+function module:GetChessTable()
+    return self.Data.chessTable
+end

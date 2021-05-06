@@ -1,0 +1,30 @@
+ManifestFileVersion: 0
+CRC: 1267793473
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 27a5099e04de567db749afab890142dd
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7290e47db5dbe4576fed2aef73fe1b68
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefabs/Images/CanMoveBtn.prefab
+Dependencies:
+- D:/UnityProjects/ChineseChessWithXLua/AssetBundles/Android/image

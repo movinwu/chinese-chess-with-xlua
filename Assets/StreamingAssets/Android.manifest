@@ -1,0 +1,28 @@
+ManifestFileVersion: 0
+CRC: 2329673124
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: panel
+      Dependencies:
+        Dependency_0: image
+    Info_1:
+      Name: lua
+      Dependencies: {}
+    Info_2:
+      Name: sound
+      Dependencies: {}
+    Info_3:
+      Name: image
+      Dependencies: {}
+    Info_4:
+      Name: json
+      Dependencies: {}
+    Info_5:
+      Name: chesspiece
+      Dependencies:
+        Dependency_0: image
+    Info_6:
+      Name: button
+      Dependencies:
+        Dependency_0: image

@@ -1,0 +1,57 @@
+ManifestFileVersion: 0
+CRC: 3672164737
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dd0f798e795114056ed72d11c9a2d27d
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/LuaTxt/ModeOptionMediator.lua.txt
+- Assets/LuaTxt/StartUpCommand.lua.txt
+- Assets/LuaTxt/Mediator.lua.txt
+- Assets/LuaTxt/PanelNames.lua.txt
+- Assets/LuaTxt/ShowPanelCommand.lua.txt
+- Assets/LuaTxt/ControlNames.lua.txt
+- Assets/LuaTxt/PositionCastToLocal.lua.txt
+- Assets/LuaTxt/JsonUtility.lua.txt
+- Assets/LuaTxt/Main.lua.txt
+- Assets/LuaTxt/SingleGamePanel.lua.txt
+- Assets/LuaTxt/InstantiateAChessBody.lua.txt
+- Assets/LuaTxt/Proxy.lua.txt
+- Assets/LuaTxt/AudioSourceManager.lua.txt
+- Assets/LuaTxt/MoveChessBody.lua.txt
+- Assets/LuaTxt/MainPanel.lua.txt
+- Assets/LuaTxt/GameFacade.lua.txt
+- Assets/LuaTxt/LevelOptionMediator.lua.txt
+- Assets/LuaTxt/SoundNames.lua.txt
+- Assets/LuaTxt/HidePanelCommand.lua.txt
+- Assets/LuaTxt/Observer.lua.txt
+- Assets/LuaTxt/LevelOptionPanel.lua.txt
+- Assets/LuaTxt/SimpleCommand.lua.txt
+- Assets/LuaTxt/NetGamePanel.lua.txt
+- Assets/LuaTxt/PureMVC.lua.txt
+- Assets/LuaTxt/Model.lua.txt
+- Assets/LuaTxt/Alias.lua.txt
+- Assets/LuaTxt/class.lua.txt
+- Assets/LuaTxt/MacroCommand.lua.txt
+- Assets/LuaTxt/NetGameMediator.lua.txt
+- Assets/LuaTxt/Controller.lua.txt
+- Assets/LuaTxt/SingleGameMediator.lua.txt
+- Assets/LuaTxt/Facade.lua.txt
+- Assets/LuaTxt/View.lua.txt
+- Assets/LuaTxt/NotificationNames.lua.txt
+- Assets/LuaTxt/ChessPieceProxy.lua.txt
+- Assets/LuaTxt/BasePanel.lua.txt
+- Assets/LuaTxt/ModeOptionPanel.lua.txt
+- Assets/LuaTxt/Notifier.lua.txt
+- Assets/LuaTxt/ChessPiece.lua.txt
+- Assets/LuaTxt/MainMediator.lua.txt
+- Assets/LuaTxt/Notification.lua.txt
+Dependencies: []

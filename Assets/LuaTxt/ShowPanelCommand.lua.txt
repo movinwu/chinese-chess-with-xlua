@@ -1,0 +1,69 @@
+--[[require "LevelOptionMediator"
+require "MainMediator"
+require "ModeOptionMediator"
+require "NetGameMediator"
+require "SingleGameMediator"
+require "ChessPieceProxy"]]
+
+ShowPanelCommand = class("ShowPanelCommand",PureMVC.SimpleCommand)
+
+function ShowPanelCommand:Execute(notification)
+    if notification.Body == PanelNames.MAIN then
+        require "MainMediator"
+        local mediator = nil
+        if not GameFacade:GetInstance():HasMediator(MainMediator.NAME) then
+            mediator = MainMediator.new()
+            GameFacade:GetInstance():RegisterMediator(mediator)
+        else
+            mediator = GameFacade:GetInstance():RetrieveMediator(MainMediator.NAME)
+        end
+        mediator:ShowMe()
+    elseif notification.Body == PanelNames.LEVEL_OPTION then
+        require "LevelOptionMediator"
+        local mediator = nil
+        if not GameFacade:GetInstance():HasMediator(LevelOptionMediator.NAME) then
+            mediator = LevelOptionMediator.new()
+            GameFacade:GetInstance():RegisterMediator(mediator)
+        else
+            mediator = GameFacade:GetInstance():RetrieveMediator(LevelOptionMediator.NAME)
+        end
+        mediator:ShowMe()
+    elseif notification.Body == PanelNames.MODE_OPTION then
+        require "ModeOptionMediator"
+        local mediator = nil
+        if not GameFacade:GetInstance():HasMediator(ModeOptionMediator.NAME) then
+            mediator = ModeOptionMediator.new()
+            GameFacade:GetInstance():RegisterMediator(mediator)
+        else
+            mediator = GameFacade:GetInstance():RetrieveMediator(ModeOptionMediator.NAME)
+        end
+        mediator:ShowMe()
+    elseif notification.Body == PanelNames.NET_GAME then
+        require "NetGameMediator"
+        local mediator = nil
+        if not GameFacade:GetInstance():HasMediator(NetGameMediator.NAME) then
+            mediator = NetGameMediator.new()
+            GameFacade:GetInstance():RegisterMediator(mediator)
+        else
+            mediator = GameFacade:GetInstance():RetrieveMediator(NetGameMediator.NAME)
+        end
+        mediator:ShowMe()
+    elseif notification.Body == PanelNames.SINGLE_GAME then
+        require "SingleGameMediator"
+        require "ChessPieceProxy"
+        --先实例化棋盘数据，再实例化棋盘，因为再棋盘的实例化过程中会使用到棋盘数据
+        if not GameFacade:GetInstance():HasProxy(ChessPieceProxy.NAME) then
+            GameFacade:GetInstance():RegisterProxy(ChessPieceProxy.new())
+        end
+        local mediator = nil
+        if not GameFacade:GetInstance():HasMediator(SingleGameMediator.NAME) then
+            mediator = SingleGameMediator.new()
+            GameFacade:GetInstance():RegisterMediator(mediator)
+        else
+            mediator = GameFacade:GetInstance():RetrieveMediator(SingleGameMediator.NAME)
+        end
+        mediator:ShowMe()
+    else
+        print("correct notification of ShowPanelCommand")
+    end
+end

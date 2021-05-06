@@ -1,0 +1,10 @@
+MoveChessBody = class("MoveChessBody")
+
+local module = MoveChessBody
+module.nowPosition = nil
+module.targetPosition = nil
+
+function module:ctor(nowPosition,targetPosition)
+    self.nowPosition = nowPosition
+    self.targetPosition = targetPosition
+end

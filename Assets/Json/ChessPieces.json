@@ -1,0 +1,16 @@
+[
+    {"id":0,"name":"PieceBlackJiangBtn","type":0,"color":1,"baseValue":65536,"baseFlexValue":0},
+    {"id":1,"name":"PieceRedShuaiBtn","type":0,"color":0,"baseValue":65536,"baseFlexValue":0},
+    {"id":2,"name":"PieceBlackShiBtn","type":1,"color":1,"baseValue":200,"baseFlexValue":1},
+    {"id":3,"name":"PieceRedShiBtn","type":1,"color":0,"baseValue":200,"baseFlexValue":1},
+    {"id":4,"name":"PieceBlackXiangBtn","type":2,"color":1,"baseValue":200,"baseFlexValue":1},
+    {"id":5,"name":"PieceRedXiangBtn","type":2,"color":0,"baseValue":200,"baseFlexValue":1},
+    {"id":6,"name":"PieceBlackMaBtn","type":3,"color":1,"baseValue":450,"baseFlexValue":13},
+    {"id":7,"name":"PieceRedMaBtn","type":3,"color":0,"baseValue":450,"baseFlexValue":13},
+    {"id":8,"name":"PieceBlackJuBtn","type":4,"color":1,"baseValue":950,"baseFlexValue":7},
+    {"id":9,"name":"PieceRedJuBtn","type":4,"color":0,"baseValue":950,"baseFlexValue":7},
+    {"id":10,"name":"PieceBlackPaoBtn","type":5,"color":1,"baseValue":450,"baseFlexValue":7},
+    {"id":11,"name":"PieceRedPaoBtn","type":5,"color":0,"baseValue":450,"baseFlexValue":7},
+    {"id":12,"name":"PieceBlackZuBtn","type":6,"color":1,"baseValue":150,"baseFlexValue":1.5},
+    {"id":13,"name":"PieceRedBingBtn","type":6,"color":0,"baseValue":150,"baseFlexValue":1.5}
+]
